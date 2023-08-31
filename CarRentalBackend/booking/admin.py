@@ -8,7 +8,7 @@ class BookModel(admin.ModelAdmin):
 
 
 class DriverModel(admin.ModelAdmin):
-    list_display = ["first_name", "last_name", "phone_number", "age"]
+    list_display = ["first_name", "last_name", "phone_number", 'gender', "age"]
 
 
 # Register your models here.

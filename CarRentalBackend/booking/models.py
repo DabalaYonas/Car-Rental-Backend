@@ -6,12 +6,19 @@ CANC = "CANCELLED"
 PEND = "PENDING"
 RET = "RETURNED"
 
+MAL = "Male"
+FEM = "Female"
+
 STATUS = ((ACC, "ACCEPTED"),
           (PEND, "PENDING"),
           (CANC, "CANCELLED"),
           (RET, "RETURNED"),
           )
 
+
+GENDER = ((MAL, "Male"),
+          (FEM, "Female")
+          )
 
 def uploaded_to(int, filename):
     return ("images/licenses/" + int.first_name + "_" + int.last_name + filename)
@@ -23,6 +30,7 @@ class Driver(models.Model):
     email = models.EmailField()
     phone_number = models.IntegerField()
     age = models.IntegerField()
+    gender = models.CharField(max_length=200, choices=GENDER)
 
     driver_license = models.ImageField(
         upload_to=uploaded_to, width_field="width_length", height_field="heigth_length", null=True, blank=True)

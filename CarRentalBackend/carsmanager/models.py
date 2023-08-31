@@ -49,6 +49,7 @@ class Car(models.Model):
     seat_number = models.IntegerField()
     engine_type = models.CharField(max_length=200, choices=ENGINE)
     transmission_type = models.CharField(max_length=200, choices=TRANSMISSION)
+    rate = models.FloatField(null=True, blank=True)
 
     images = models.ImageField(
         upload_to=uploaded_to, null=True, blank=True)
