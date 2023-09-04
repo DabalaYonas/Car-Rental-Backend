@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from driver.models import Driver
 
 VAN = "VAN"
 SUV = "SUV"
@@ -45,12 +45,15 @@ class Car(models.Model):
     plate_number = models.CharField(max_length=200)
 
     # Car features
+    with_driver = models.BooleanField()
     category = models.CharField(max_length=200, choices=CATEGORY)
     seat_number = models.IntegerField()
     engine_type = models.CharField(max_length=200, choices=ENGINE)
     transmission_type = models.CharField(max_length=200, choices=TRANSMISSION)
     rate = models.FloatField(null=True, blank=True)
 
+    driver = models.ForeignKey(
+        to=Driver, on_delete=models.SET_NULL, null=True, blank=True)
     images = models.ImageField(
         upload_to=uploaded_to, null=True, blank=True)
     width_length = models.IntegerField(default=0, null=True, blank=True)

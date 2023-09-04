@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'carsmanager',
     'booking',
+    'driver',
     'payment',
     'corsheaders',
     'rest_framework',

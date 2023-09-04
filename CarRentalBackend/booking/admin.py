@@ -7,10 +7,5 @@ class BookModel(admin.ModelAdmin):
                     "pick_up_date", "return_date", "status"]
 
 
-class DriverModel(admin.ModelAdmin):
-    list_display = ["first_name", "last_name", "phone_number", 'gender', "age"]
-
-
 # Register your models here.
 admin.site.register(models.Booking, BookModel)
-admin.site.register(models.Driver, DriverModel)
