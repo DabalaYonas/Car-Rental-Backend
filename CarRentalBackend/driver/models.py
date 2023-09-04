@@ -19,6 +19,8 @@ class Driver(models.Model):
     phone_number = models.IntegerField()
     age = models.IntegerField()
     gender = models.CharField(max_length=200, choices=GENDER)
+    price_per_day = models.IntegerField(null=True, blank=True)
+    is_customer = models.BooleanField(default=False)
 
     driver_license = models.ImageField(
         upload_to=uploaded_to, width_field="width_length", height_field="heigth_length", null=True, blank=True)

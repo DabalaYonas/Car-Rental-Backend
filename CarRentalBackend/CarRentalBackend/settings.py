@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'carsmanager',
     'booking',
     'driver',
+    'customer',
     'payment',
     'corsheaders',
     'rest_framework',

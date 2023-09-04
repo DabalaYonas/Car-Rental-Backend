@@ -9,5 +9,6 @@ router.register('', views.BookingView, 'booking')
 urlpatterns = [
     path('api/', include(router.urls)),
     path('driver/', include("driver.urls")),
+    path('customer/', include("customer.urls")),
     path('payment/', include("payment.urls")),
 ]

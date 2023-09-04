@@ -1,6 +1,7 @@
 from django.db import models
 from carsmanager.models import Car
 from driver.models import Driver
+from customer.models import Customer
 
 ACC = "ACCEPTED"
 CANC = "CANCELLED"
@@ -22,6 +23,8 @@ class Booking(models.Model):
         Car, on_delete=models.CASCADE, null=True, blank=True)
     booked_driver = models.ForeignKey(
         Driver, on_delete=models.CASCADE, null=True, blank=True)
+    customer = models.ForeignKey(
+        Customer, on_delete=models.CASCADE, null=True, blank=True)
     status = models.CharField(
         max_length=200, choices=STATUS, default=PEND, null=True, blank=True)
 
