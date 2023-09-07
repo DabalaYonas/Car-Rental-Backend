@@ -28,6 +28,7 @@ class Payment(models.Model):
     status = models.CharField(
         max_length=200, choices=PAYMENT_STATUS, default=NOT_PAID)
     description = models.CharField(max_length=200, null=True, blank=True)
+    paid_date = models.DateField(auto_now=True, null=True, blank=True)
 
     def __str__(self):
         return str(self.amount)
