@@ -1,6 +1,5 @@
 from django.db import models
 from carsmanager.models import Car
-from driver.models import Driver
 from customer.models import Customer
 
 ACC = "ACCEPTED"
@@ -21,8 +20,6 @@ class Booking(models.Model):
 
     booked_car = models.ForeignKey(
         Car, on_delete=models.CASCADE, null=True, blank=True)
-    booked_driver = models.ForeignKey(
-        Driver, on_delete=models.CASCADE, null=True, blank=True)
     customer = models.ForeignKey(
         Customer, on_delete=models.CASCADE, null=True, blank=True)
     status = models.CharField(
@@ -33,6 +30,25 @@ class Booking(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        self.booked_car.is_available = False
-        self.booked_car.save()
-        print("Booked car", self.booked_car)
+        if self.status == PEND or self.status == ACC:
+            self.booked_car.is_available = False
+            self.booked_car.save()
+
+
+def uploaded_to(int, filename):
+    return ("images/signature/" + filename)
+
+class Agreement(models.Model):
+    booking = models.ForeignKey(
+        Booking, on_delete=models.CASCADE, null=True, blank=True)
+    
+    date = models.DateField(auto_now=True, null=True, blank=True)
+    deposit = models.IntegerField(null=True, blank=True)
+
+    signature = models.ImageField(
+        upload_to=uploaded_to, width_field="width_length", height_field="heigth_length", null=True, blank=True)
+    width_length = models.IntegerField(default=0, null=True, blank=True)
+    heigth_length = models.IntegerField(default=0, null=True, blank=True)
+    
+    def __str__(self):
+        return str(self.id)

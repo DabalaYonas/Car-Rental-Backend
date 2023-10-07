@@ -8,4 +8,5 @@ router.register('', views.CarView, 'cars')
 urlpatterns = [
     path('api/', include(router.urls)),
     path('<int:id>/', include(router.urls)),
+    path('lookup/', include("lookup.urls")),
 ]

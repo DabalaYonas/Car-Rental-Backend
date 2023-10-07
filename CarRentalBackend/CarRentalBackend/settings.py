@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'driver',
     'customer',
     'payment',
+    'lookup',
     'corsheaders',
     'rest_framework',
 ]

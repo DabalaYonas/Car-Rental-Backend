@@ -1,6 +1,7 @@
 from .models import Payment
 from rest_framework import viewsets
 from .serializers import PaymentSerializer
+from django.http import JsonResponse
 
 
 class PaymentView(viewsets.ModelViewSet):

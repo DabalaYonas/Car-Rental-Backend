@@ -2,6 +2,7 @@ from .models import Driver
 from rest_framework import viewsets
 from rest_framework.parsers import FormParser, MultiPartParser
 from .serializers import DriverSerializer
+from django.http import JsonResponse
 
 
 class DriverView(viewsets.ModelViewSet):

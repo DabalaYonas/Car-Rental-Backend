@@ -2,6 +2,7 @@ from .models import Customer
 from rest_framework import viewsets
 from rest_framework.parsers import FormParser, MultiPartParser
 from .serializers import CustomerSerializer
+from django.http import JsonResponse
 
 
 class CustomerView(viewsets.ModelViewSet):

@@ -1,5 +1,6 @@
 from django.db import models
 from booking.models import Booking
+import datetime
 
 
 TELEBIRR = "TELEBIRR"
@@ -28,7 +29,11 @@ class Payment(models.Model):
     status = models.CharField(
         max_length=200, choices=PAYMENT_STATUS, default=NOT_PAID)
     description = models.CharField(max_length=200, null=True, blank=True)
-    paid_date = models.DateField(auto_now=True, null=True, blank=True)
+    paid_date = models.DateField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        self.paid_date = datetime.date.today()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return str(self.amount)

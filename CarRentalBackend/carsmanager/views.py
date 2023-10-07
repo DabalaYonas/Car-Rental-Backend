@@ -3,6 +3,7 @@ from .models import Car
 from rest_framework import viewsets
 from rest_framework.parsers import FormParser, MultiPartParser
 from .serializers import CarSerializer
+from django.http import JsonResponse
 
 
 class CarView(viewsets.ModelViewSet):
